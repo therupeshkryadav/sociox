@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.socialbundle.Adapter.MyAdapter
+import com.example.socialbundle.R
 import com.example.socialbundle.Stories
 import com.example.socialbundle.databinding.FragmentHomeBinding
 import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
@@ -15,32 +16,41 @@ import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 class HomeFragment : Fragment() {
 
     lateinit var binding: FragmentHomeBinding
-    private lateinit var myRecyclerView: RecyclerView
     private lateinit var myAdapter: MyAdapter
     private lateinit var storiesList: ArrayList<Stories>
 
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-
-        myRecyclerView = binding.RecycleView
-        myAdapter = MyAdapter(storiesList)
-        myRecyclerView.adapter= myAdapter
-        myRecyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
+        storiesList = ArrayList()
 
-        binding.title.setOnClickListener{
-            if(binding.dropDownArrow.visibility == View.VISIBLE)
-            {
-                binding.dropDownArrow.visibility = View.GONE
+        storiesList.add(Stories(R.drawable.crown, "Rupa Randi"))
+        storiesList.add(Stories(R.drawable.crown, "Rupa Chakka"))
+        storiesList.add(Stories(R.drawable.crown, "Rupa Mehri"))
+        storiesList.add(Stories(R.drawable.crown, "Rupa Chinar"))
+        storiesList.add(Stories(R.drawable.crown, "Rupa Chudakkad"))
+        storiesList.add(Stories(R.drawable.crown, "Rupa Pelakkad"))
+        storiesList.add(Stories(R.drawable.crown, "Rupa Ladchati"))
+        storiesList.add(Stories(R.drawable.crown, "Rupa Matar"))
+        storiesList.add(Stories(R.drawable.crown, "Rupa Gay"))
+
+        binding.apply {
+            title.setOnClickListener {
+                if (dropDownArrow.visibility == View.VISIBLE) {
+                    dropDownArrow.visibility = View.GONE
+                } else {
+                    dropDownArrow.visibility = View.VISIBLE
+                }
             }
-            else{
-                binding.dropDownArrow.visibility = View.VISIBLE
-            }
+
+            myAdapter = MyAdapter(storiesList)
+            rvStory.adapter = myAdapter
+            rvStory.layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
         }
 
         return binding.root

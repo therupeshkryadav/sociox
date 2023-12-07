@@ -59,9 +59,9 @@
             android:id="@+id/cardView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="300dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            app:cardCornerRadius="300dp"
             app:cardElevation="4dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title">
@@ -78,11 +78,11 @@
         </com.google.android.material.card.MaterialCardView>
 
         <ImageButton
-            android:elevation="10dp"
             android:id="@+id/addStory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/button_add_story"
+            android:elevation="10dp"
             android:src="@drawable/add_story"
             app:layout_constraintBottom_toBottomOf="@+id/cardView2"
             app:layout_constraintEnd_toEndOf="@+id/cardView2"
@@ -99,12 +99,15 @@
             app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/RecycleView"
+            android:id="@+id/rvStory"
             android:layout_width="wrap_content"
             android:layout_height="120dp"
-            android:orientation="horizontal"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
             android:paddingTop="2dp"
+            android:paddingEnd="8dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintStart_toEndOf="@+id/cardView2"
             app:layout_constraintTop_toBottomOf="@+id/title"
@@ -119,7 +122,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/RecycleView"
+            app:layout_constraintTop_toBottomOf="@+id/rvStory"
             tools:itemCount="2"
             tools:listitem="@layout/post_item" />
 
