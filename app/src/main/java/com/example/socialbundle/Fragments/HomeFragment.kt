@@ -6,12 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.socialbundle.Adapter.MyAdapter
 import com.example.socialbundle.R
 import com.example.socialbundle.Stories
 import com.example.socialbundle.databinding.FragmentHomeBinding
-import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 class HomeFragment : Fragment() {
 
