@@ -25,15 +25,15 @@ class HomeFragment : Fragment() {
 
         storiesList = ArrayList()
 
-        storiesList.add(Stories(R.drawable.crown, "Rupa Randi"))
-        storiesList.add(Stories(R.drawable.crown, "Rupa Chakka"))
-        storiesList.add(Stories(R.drawable.crown, "Rupa Mehri"))
-        storiesList.add(Stories(R.drawable.crown, "Rupa Chinar"))
-        storiesList.add(Stories(R.drawable.crown, "Rupa Chudakkad"))
-        storiesList.add(Stories(R.drawable.crown, "Rupa Pelakkad"))
-        storiesList.add(Stories(R.drawable.crown, "Rupa Ladchati"))
-        storiesList.add(Stories(R.drawable.crown, "Rupa Matar"))
-        storiesList.add(Stories(R.drawable.crown, "Rupa Gay"))
+        storiesList.add(Stories(R.drawable.profile_img, "username1"))
+        storiesList.add(Stories(R.drawable.profile_img, "username2"))
+        storiesList.add(Stories(R.drawable.profile_img, "username3"))
+        storiesList.add(Stories(R.drawable.profile_img, "username4"))
+        storiesList.add(Stories(R.drawable.profile_img, "username5"))
+        storiesList.add(Stories(R.drawable.profile_img, "username6"))
+        storiesList.add(Stories(R.drawable.profile_img, "username7"))
+        storiesList.add(Stories(R.drawable.profile_img, "username8"))
+        storiesList.add(Stories(R.drawable.profile_img, "username9"))
 
         binding.apply {
             title.setOnClickListener {
