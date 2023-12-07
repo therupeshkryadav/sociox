@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".LoginActivity">
+
+    <Spinner
+        android:id="@+id/languages"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:entries="@array/languages"
+        android:spinnerMode="dropdown"
+        app:layout_constraintEnd_toEndOf="@+id/logo2"
+        app:layout_constraintStart_toStartOf="@+id/logo2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/logo2"
+        android:layout_width="147dp"
+        android:layout_height="131dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/crown"
+        app:tint="#F0113FD1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/languages" />
+
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="12dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/logo2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <EditText
+            android:id="@+id/editTextTextEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:ems="10"
+            android:textSize="18sp"
+            android:paddingHorizontal="18dp"
+            android:hint="@string/username_email_address_or_mobile_number"
+            android:background="@drawable/bg_box"
+            android:inputType="textEmailAddress" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/editTextTextPassword"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:ems="10"
+                android:paddingHorizontal="18dp"
+                android:textSize="18sp"
+                android:hint="@string/password"
+                android:background="@drawable/bg_box"
+                android:inputType="textPassword" />
+
+            <ImageView
+                android:id="@+id/passwordShowHide1"
+                android:layout_width="30dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_hide_pwd"/>
+
+        </RelativeLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/log_in"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:background="@drawable/login_bg"
+            />
+
+        <TextView
+            android:id="@+id/forgot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/forgotten_password"
+            android:gravity="center"/>
+
+        <ProgressBar
+            android:id="@+id/progressBars"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="8dp"
+            android:visibility="gone"
+             />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/create"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginTop="100dp"
+            android:text="@string/create_new_account"
+            android:textAllCaps="false"
+            android:textColor="#F0113FD1"
+            android:background="@drawable/bg_create"
+            />
+    </LinearLayout>
+    
+    <TextView
+        android:id="@+id/company2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/company"
+        android:textColor="#F0113FD1"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/linear1"
+        app:layout_constraintStart_toStartOf="@+id/linear1"
+        app:layout_constraintTop_toBottomOf="@+id/linear1"
+        app:drawableStartCompat="@drawable/logo_techzordic"
+        app:drawableTint="#F0113FD1" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "481558870245",
+    "project_id": "sociox-0007",
+    "storage_bucket": "sociox-0007.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:481558870245:android:bf7eb2ee99476416f9bc0c",
+        "android_client_info": {
+          "package_name": "com.example.socialbundle"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXXXkfyTVd4sZnhaDR74zjlTCaKsq0P4w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:481558870245:android:f7df28934f9f7db3f9bc0c",
+        "android_client_info": {
+          "package_name": "com.example.sociox"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXXXkfyTVd4sZnhaDR74zjlTCaKsq0P4w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

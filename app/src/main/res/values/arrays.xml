@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="languages" >
+        <item name = "en">English(UK)</item>
+        <item name = "hind">Hindi(India)</item>
+    </array>
+    <array name="clickables"  >
+        <item name = "fl">Following</item>
+        <item name = "fv">Favourites</item>
+    </array>
+</resources>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottom_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="@string/t"
+        android:icon="@drawable/home">
+
+    </item>
+    <item
+        android:id="@+id/bottom_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="@string/t"
+        android:icon="@drawable/search"/>
+    <item
+        android:id="@+id/bottom_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="@string/t"
+        android:icon="@drawable/add"/>
+    <item
+        android:id="@+id/bottom_clips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="@string/t"
+        android:icon="@drawable/socio_clips"/>
+    <item
+        android:id="@+id/bottom_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="@string/t"
+        android:icon="@drawable/profile"/>
+</menu>
