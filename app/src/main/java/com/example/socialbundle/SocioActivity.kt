@@ -4,10 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.example.socialbundle.Fragments.ClipsFragment
-import com.example.socialbundle.Fragments.HomeFragment
-import com.example.socialbundle.Fragments.ProfileFragment
-import com.example.socialbundle.Fragments.SearchFragment
+import com.example.socialbundle.fragments.ClipsFragment
+import com.example.socialbundle.fragments.HomeFragment
+import com.example.socialbundle.fragments.ProfileFragment
+import com.example.socialbundle.fragments.SearchFragment
 import com.example.socialbundle.databinding.ActivitySocioBinding
 import com.google.android.material.navigation.NavigationBarView
 

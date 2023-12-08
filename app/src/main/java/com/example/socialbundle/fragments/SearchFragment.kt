@@ -1,4 +1,4 @@
-package com.example.socialbundle.Fragments
+package com.example.socialbundle.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
