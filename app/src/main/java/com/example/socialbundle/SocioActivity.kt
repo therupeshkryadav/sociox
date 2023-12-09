@@ -4,10 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.example.socialbundle.fragments.ClipsFragment
-import com.example.socialbundle.fragments.HomeFragment
-import com.example.socialbundle.fragments.ProfileFragment
-import com.example.socialbundle.fragments.SearchFragment
 import com.example.socialbundle.databinding.ActivitySocioBinding
 import com.google.android.material.navigation.NavigationBarView
 
@@ -23,7 +19,6 @@ class SocioActivity : AppCompatActivity() {
 
         // Disable animation for Bottom Navigation Bar icons
         binding.bottomNavigation.labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_UNLABELED
-
 
 
         // Set text accessibility off

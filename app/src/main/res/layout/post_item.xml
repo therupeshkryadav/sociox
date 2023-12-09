@@ -60,12 +60,17 @@
 
             </LinearLayout>
 
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
 
             <ImageView
                 android:id="@+id/menu_post"
-                android:layout_width="35dp"
+                android:layout_width="wrap_content"
                 android:layout_height="35dp"
-                android:layout_marginStart="220dp"
+              android:layout_marginEnd="16dp"
                 android:src="@drawable/three_dot" />
 
         </LinearLayout>
@@ -107,12 +112,16 @@
                 android:layout_height="30dp"
                 android:layout_marginStart="16dp"
                 android:src="@drawable/send_messages" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
 
             <ImageView
                 android:id="@+id/save_post"
-                android:layout_width="30dp"
+                android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_marginStart="220dp"
+                android:layout_marginEnd="16dp"
                 android:src="@drawable/save" />
 
         </LinearLayout>

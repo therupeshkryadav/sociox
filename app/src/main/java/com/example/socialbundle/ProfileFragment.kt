@@ -1,4 +1,4 @@
-package com.example.socialbundle.fragments
+package com.example.socialbundle
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.socialbundle.LoginActivity
 import com.example.socialbundle.MainActivity.Companion.auth
 import com.example.socialbundle.databinding.FragmentProfileBinding
 

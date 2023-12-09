@@ -1,4 +1,4 @@
-package com.example.socialbundle.fragments
+package com.example.socialbundle
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,12 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-
-import com.example.socialbundle.Posts
-import com.example.socialbundle.R
-import com.example.socialbundle.Stories
-import com.example.socialbundle.adapter.myAdapter
-import com.example.socialbundle.adapter.myAdapter2
 import com.example.socialbundle.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -41,16 +35,15 @@ class HomeFragment : Fragment() {
         storiesList.add(Stories(R.drawable.profile_img, "username9"))
 
         postsList = ArrayList()
-        postsList.add(Posts(R.drawable.profile_img, R.drawable.first,"liked by username and 69 others","username caption caption caption caption caption caption caption","username","India"))
-        postsList.add(Posts(R.drawable.profile_img, R.drawable.first,"liked by username and 69 others","username caption caption caption caption caption caption caption","username","India"))
-        postsList.add(Posts(R.drawable.profile_img, R.drawable.first,"liked by username and 69 others","username caption caption caption caption caption caption caption","username","India"))
-        postsList.add(Posts(R.drawable.profile_img, R.drawable.first,"liked by username and 69 others","username caption caption caption caption caption caption caption","username","India"))
-        postsList.add(Posts(R.drawable.profile_img, R.drawable.first,"liked by username and 69 others","username caption caption caption caption caption caption caption","username","India"))
-        postsList.add(Posts(R.drawable.profile_img, R.drawable.first,"liked by username and 69 others","username caption caption caption caption caption caption caption","username","India"))
-        postsList.add(Posts(R.drawable.profile_img, R.drawable.first,"liked by username and 69 others","username caption caption caption caption caption caption caption","username","India"))
-        postsList.add(Posts(R.drawable.profile_img, R.drawable.first,"liked by username and 69 others","username caption caption caption caption caption caption caption","username","India"))
-        postsList.add(Posts(R.drawable.profile_img, R.drawable.first,"liked by username and 69 others","username caption caption caption caption caption caption caption","username","India"))
-
+        postsList.add(Posts(R.drawable.profile_img, R.drawable.first,"username1","India","liked by ussername and 69 others","username1 caption caption caption"))
+        postsList.add(Posts(R.drawable.profile_img, R.drawable.first,"username2","India","liked by ussername and 69 others","username2 caption caption caption"))
+        postsList.add(Posts(R.drawable.profile_img, R.drawable.first,"username3","India","liked by ussername and 69 others","username3 caption caption caption"))
+        postsList.add(Posts(R.drawable.profile_img, R.drawable.first,"username4","India","liked by ussername and 69 others","username4 caption caption caption"))
+        postsList.add(Posts(R.drawable.profile_img, R.drawable.first,"username5","India","liked by ussername and 69 others","username5 caption caption caption"))
+        postsList.add(Posts(R.drawable.profile_img, R.drawable.first,"username6","India","liked by ussername and 69 others","username6 caption caption caption"))
+        postsList.add(Posts(R.drawable.profile_img, R.drawable.first,"username7","India","liked by ussername and 69 others","username7 caption caption caption"))
+        postsList.add(Posts(R.drawable.profile_img, R.drawable.first,"username8","India","liked by ussername and 69 others","username8 caption caption caption"))
+        postsList.add(Posts(R.drawable.profile_img, R.drawable.first,"username9","India","liked by ussername and 69 others","username9 caption caption caption"))
 
         binding.apply {
             title.setOnClickListener {

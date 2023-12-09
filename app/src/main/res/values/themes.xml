@@ -6,4 +6,6 @@
     </style>
 
     <style name="Theme.SocialBundle" parent="Base.Theme.SocialBundle" />
+
+
 </resources>
