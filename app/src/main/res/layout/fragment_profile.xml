@@ -46,7 +46,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/rvHighlight" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/logOut"
@@ -163,8 +163,8 @@
             android:id="@+id/nickname_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/nickname"
             android:layout_marginTop="16dp"
+            android:text="@string/nickname"
             app:layout_constraintEnd_toEndOf="@+id/cardView2"
             app:layout_constraintStart_toStartOf="@+id/cardView2"
             app:layout_constraintTop_toBottomOf="@+id/cardView2" />
@@ -178,11 +178,12 @@
             app:layout_constraintTop_toBottomOf="@+id/nickname_edit" />
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="12dp"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bio">
@@ -192,8 +193,8 @@
                 android:id="@+id/edit_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="28dp"
-                android:layout_weight="1"
                 android:layout_marginEnd="4dp"
+                android:layout_weight="1"
                 android:background="@drawable/bg_button2"
                 android:text="Edit profile"
                 android:textAllCaps="false" />
@@ -202,8 +203,8 @@
                 android:id="@+id/share_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="28dp"
-                android:layout_weight="1"
                 android:layout_marginEnd="4dp"
+                android:layout_weight="1"
                 android:background="@drawable/bg_button2"
                 android:text="Share profile"
                 android:textAllCaps="false" />
@@ -216,6 +217,57 @@
                 android:background="@drawable/bg_button2"
                 android:src="@drawable/add_peoples" />
         </LinearLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvHighlight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintStart_toEndOf="@+id/cardView22"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            tools:itemCount="3"
+            tools:listitem="@layout/highlight_item" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardView22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="300dp"
+            app:cardElevation="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/rvHighlight"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rvHighlight">
+
+            <ImageView
+                android:id="@+id/addHighlightImage"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/add_story"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/username" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/highlight_tag"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="Highlight"
+            android:textColor="#928D8D"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="@+id/cardView22"
+            app:layout_constraintStart_toStartOf="@+id/cardView22"
+            app:layout_constraintTop_toBottomOf="@+id/cardView22" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

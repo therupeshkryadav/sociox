@@ -49,4 +49,5 @@
     <string name="_0">0</string>
     <string name="posts">Posts</string>
     <string name="following">Following</string>
+    <string name="username_nice_pic"><b>username</b> nice pic</string>
 </resources>

@@ -37,6 +37,7 @@ class myAdapter2(private val postsList: ArrayList<Posts>) :
         var locations: TextView = itemView.findViewById(R.id.location)
         var peopleslikedpost: TextView = itemView.findViewById(R.id.peoplesLiked)
         var userNDcaptions: TextView = itemView.findViewById(R.id.usernameNdCaption)
+
     }
 
 }

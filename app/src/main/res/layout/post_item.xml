@@ -223,6 +223,15 @@
                 android:text="@string/view_all_comments"
                 android:layout_marginStart="16dp"
                 android:textColor="#928D8D"/>
+            <TextView
+                android:id="@+id/usernameComments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/username_nice_pic"
+                android:layout_marginStart="16dp"
+                />
+
+
 
 
 

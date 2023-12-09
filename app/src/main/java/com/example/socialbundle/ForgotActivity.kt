@@ -29,7 +29,7 @@ class ForgotActivity : AppCompatActivity() {
             binding.progressBar2.visibility = View.VISIBLE
 
             val emails: String? = binding.emailEdittext.text.toString()
-// Assuming "user" is the root node in your Realtime Database
+            // Assuming "user" is the root node in your Realtime Database
             val databaseReference: DatabaseReference =
                 FirebaseDatabase.getInstance().getReference("Users")
 

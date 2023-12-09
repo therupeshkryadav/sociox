@@ -6,7 +6,7 @@
     android:layout_marginHorizontal="8dp">
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardView2"
+        android:id="@+id/cardView22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cardCornerRadius="300dp"
@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/profileImage"
+            android:id="@+id/highlightImage"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:scaleType="centerCrop"
@@ -26,30 +26,21 @@
 
     </com.google.android.material.card.MaterialCardView>
 
-    <ImageButton
-        android:id="@+id/addStory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_add_story"
-        android:elevation="10dp"
-        android:src="@drawable/add_story"
-        app:layout_constraintBottom_toBottomOf="@+id/cardView2"
-        app:layout_constraintEnd_toEndOf="@+id/cardView2"
-        app:tint="@color/white" />
+
 
     <TextView
-        android:id="@+id/username_story"
+        android:id="@+id/highlight_tag"
         android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:gravity="center"
         android:maxLines="1"
-        android:text="username"
+        android:text="highlight"
         android:textSize="10sp"
         android:textColor="#928D8D"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardView2" />
+        app:layout_constraintTop_toBottomOf="@id/cardView22" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

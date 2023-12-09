@@ -55,62 +55,18 @@
             app:layout_constraintTop_toTopOf="@+id/messages"
             app:srcCompat="@drawable/notify" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            app:cardCornerRadius="300dp"
-            app:cardElevation="4dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title">
-
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/profile_img"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/username" />
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <ImageButton
-            android:id="@+id/addStory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_add_story"
-            android:elevation="10dp"
-            android:src="@drawable/add_story"
-            app:layout_constraintBottom_toBottomOf="@+id/cardView2"
-            app:layout_constraintEnd_toEndOf="@+id/cardView2"
-            app:tint="@color/white" />
-
-        <TextView
-            android:id="@+id/yourStory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Your story"
-            android:textSize="10sp"
-            android:textColor="#928D8D"
-            app:layout_constraintEnd_toEndOf="@+id/cardView2"
-            app:layout_constraintStart_toStartOf="@+id/cardView2"
-            app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvStory"
             android:layout_width="wrap_content"
             android:layout_height="120dp"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:clipToPadding="false"
             android:orientation="horizontal"
             android:paddingTop="2dp"
             android:paddingEnd="8dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintStart_toEndOf="@+id/cardView2"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title"
             tools:listitem="@layout/story_item" />
 

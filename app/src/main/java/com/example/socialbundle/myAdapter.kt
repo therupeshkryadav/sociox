@@ -18,6 +18,7 @@ class myAdapter(private val storiesList: ArrayList<Stories>) : RecyclerView.Adap
         val currentItem = storiesList[position]
         holder.profilePic.setImageResource(currentItem.profileImage)
         holder.username.text = currentItem.username_story
+
     }
 
     override fun getItemCount(): Int {
@@ -27,6 +28,7 @@ class myAdapter(private val storiesList: ArrayList<Stories>) : RecyclerView.Adap
     class MyViewHolder(itemView:View) : RecyclerView.ViewHolder(itemView){
         val profilePic: ImageView = itemView.findViewById(R.id.profileImage)
         val username: TextView = itemView.findViewById(R.id.username_story)
+
 
     }
 
