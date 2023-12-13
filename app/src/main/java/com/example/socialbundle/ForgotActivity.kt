@@ -2,7 +2,6 @@ package com.example.socialbundle
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.util.Log
 import android.util.Patterns
 import android.view.View
@@ -10,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.socialbundle.MainActivity.Companion.auth
 import com.example.socialbundle.databinding.ActivityForgotBinding
+import com.example.socialbundle.utils.USER_NODE
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -29,9 +29,10 @@ class ForgotActivity : AppCompatActivity() {
             binding.progressBar2.visibility = View.VISIBLE
 
             val emails: String? = binding.emailEdittext.text.toString()
+
             // Assuming "user" is the root node in your Realtime Database
             val databaseReference: DatabaseReference =
-                FirebaseDatabase.getInstance().getReference("Users")
+                FirebaseDatabase.getInstance().getReference(USER_NODE)
 
             val targetEmail = emails // The email you want to search for
 
@@ -44,6 +45,7 @@ class ForgotActivity : AppCompatActivity() {
                 binding.emailEdittext.requestFocus()
                 binding.progressBar2.visibility = View.INVISIBLE
             } else {
+                binding.sendOtp.isEnabled = false
                 databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         var emailFound = false
@@ -66,6 +68,7 @@ class ForgotActivity : AppCompatActivity() {
                                         startActivity(Intent(this@ForgotActivity, LoginActivity::class.java))
                                         finish()
                                     } else {
+                                        binding.sendOtp.isEnabled = true
                                         // Failed to send password reset email
                                         binding.progressBar2.visibility = View.INVISIBLE
                                         Toast.makeText(this@ForgotActivity, "Something went wrong", Toast.LENGTH_SHORT).show()
@@ -73,6 +76,7 @@ class ForgotActivity : AppCompatActivity() {
                                     }
                                 }
                         } else {
+                            binding.sendOtp.isEnabled = true
                             binding.progressBar2.visibility = View.INVISIBLE
                             binding.emailEdittext.error = "$targetEmail : not Registered"
                             binding.emailEdittext.requestFocus()
@@ -80,31 +84,13 @@ class ForgotActivity : AppCompatActivity() {
                     }
 
                     override fun onCancelled(databaseError: DatabaseError) {
+                        binding.sendOtp.isEnabled = true
                         binding.progressBar2.visibility = View.INVISIBLE
                         println("Error: ${databaseError.message}")
                     }
                 })
-//        binding.reset.setOnClickListener {
-//            binding.progressBar2.visibility = View.VISIBLE
-//
-//            object : CountDownTimer(1000, 500) {
-//
-//                override fun onTick(millisUntilFinished: Long) {
-//
-//                }
-//
-//                override fun onFinish() {
-//
-//                    binding.linear2.visibility = View.INVISIBLE
-//                    binding.linear4.visibility = View.VISIBLE
-//                    binding.forgotAndOtpAndReset.text = changing[2]
-//                    binding.progressBar2.visibility = View.GONE
-//
-//                }
-//            }.start()
-//        }
-
             }
         }
+
     }
 }

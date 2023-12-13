@@ -28,7 +28,6 @@
     <string name="confirm_password">Confirm Password*</string>
     <string name="are_you_above_18_years_of_age"> <u>I agree to the terms &amp; conditions </u> </string>
     <string name="sign_up">Sign Up</string>
-    <string name="already_have_an_account">Already have an account ?</string>
     <string name="login">Login</string>
     <string name="contact_no">Contact No.*</string>
     <string name="enter_your_password">Enter your password</string>
@@ -37,10 +36,9 @@
     <string name="socioxe">Sociox</string>
     <string name="title_activity_post">.</string>
     <string name="search">Search</string>
-    <string name="nickname">nickname</string>
-    <string name="jai_shree_ram_n_jai_shree_ram">Jai shree Ram !!\nJai shree Ram !!</string>
+    <string name="nickname">fullName</string>
+    <string name="jai_shree_ram_n_jai_shree_ram">------------------------------------------------------------------------------------</string>
     <string name="username_comment"><b>username</b> caption caption caption caption caption caption caption</string>
-
     <string name="location">location</string>
     <string name="liked_by_username_and_12_others">Liked by <b>username</b> and <b>12</b> others</string>
     <string name="username_profile">username</string>
@@ -50,4 +48,6 @@
     <string name="posts">Posts</string>
     <string name="following">Following</string>
     <string name="username_nice_pic"><b>username</b> nice pic</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

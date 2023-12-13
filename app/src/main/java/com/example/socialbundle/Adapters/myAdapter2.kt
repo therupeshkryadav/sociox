@@ -1,4 +1,4 @@
-package com.example.socialbundle
+package com.example.socialbundle.Adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.socialbundle.Posts
+import com.example.socialbundle.R
 
 class myAdapter2(private val postsList: ArrayList<Posts>) :
     RecyclerView.Adapter<myAdapter2.MyViewHolder>() {

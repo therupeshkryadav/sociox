@@ -5,6 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.socialbundle.databinding.ActivitySocioBinding
+import com.example.socialbundle.fragments.ClipsFragment
+import com.example.socialbundle.fragments.HomeFragment
+import com.example.socialbundle.fragments.ProfileFragment
+import com.example.socialbundle.fragments.SearchFragment
 import com.google.android.material.navigation.NavigationBarView
 
 class SocioActivity : AppCompatActivity() {
@@ -43,7 +47,7 @@ class SocioActivity : AppCompatActivity() {
                     true
                 }
                 R.id.bottom_add -> {
-                    startActivity(Intent(this, PostActivity::class.java))
+
                     true
                 }
                 else -> false

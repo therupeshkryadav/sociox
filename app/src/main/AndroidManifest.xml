@@ -18,11 +18,6 @@
             android:name=".EditActivity"
             android:exported="false" />
         <activity
-            android:name=".PostActivity"
-            android:exported="false"
-            android:label="@string/title_activity_post"
-            android:theme="@style/Theme.SocialBundle" />
-        <activity
             android:name=".ForgotActivity"
             android:exported="false" />
         <activity
