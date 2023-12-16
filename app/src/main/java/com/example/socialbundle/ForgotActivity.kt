@@ -7,9 +7,9 @@ import android.util.Patterns
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.socialbundle.MainActivity.Companion.auth
 import com.example.socialbundle.databinding.ActivityForgotBinding
 import com.example.socialbundle.utils.USER_NODE
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -34,8 +34,6 @@ class ForgotActivity : AppCompatActivity() {
             val databaseReference: DatabaseReference =
                 FirebaseDatabase.getInstance().getReference(USER_NODE)
 
-            val targetEmail = emails // The email you want to search for
-
             if (emails.isNullOrEmpty()) {
                 binding.emailEdittext.error = "Enter Email"
                 binding.emailEdittext.requestFocus()
@@ -53,7 +51,7 @@ class ForgotActivity : AppCompatActivity() {
                         for (childSnapshot in dataSnapshot.children) {
                             val email = childSnapshot.child("emailId").getValue(String::class.java)
 
-                            if (email == targetEmail) {
+                            if (email == emails) {
                                 // Email found
                                 emailFound = true
                                 break
@@ -61,7 +59,7 @@ class ForgotActivity : AppCompatActivity() {
                         }
 
                         if (emailFound) {
-                            auth.sendPasswordResetEmail(emails.toString()).addOnCompleteListener { task ->
+                            FirebaseAuth.getInstance().sendPasswordResetEmail(emails.toString()).addOnCompleteListener { task ->
                                     if (task.isSuccessful) {
                                         // Password reset email sent successfully
                                         Toast.makeText(this@ForgotActivity, "Password reset email sent", Toast.LENGTH_SHORT).show()
@@ -78,7 +76,7 @@ class ForgotActivity : AppCompatActivity() {
                         } else {
                             binding.sendOtp.isEnabled = true
                             binding.progressBar2.visibility = View.INVISIBLE
-                            binding.emailEdittext.error = "$targetEmail : not Registered"
+                            binding.emailEdittext.error = "$emails : not Registered"
                             binding.emailEdittext.requestFocus()
                         }
                     }

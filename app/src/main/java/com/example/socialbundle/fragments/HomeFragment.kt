@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.socialbundle.Posts
+import com.example.socialbundle.DataClasses.Posts
 import com.example.socialbundle.R
-import com.example.socialbundle.Stories
+import com.example.socialbundle.DataClasses.Stories
 import com.example.socialbundle.databinding.FragmentHomeBinding
 import com.example.socialbundle.Adapters.myAdapter
 import com.example.socialbundle.Adapters.myAdapter2

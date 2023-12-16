@@ -8,13 +8,10 @@ import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
-    companion object {
-        lateinit var auth: FirebaseAuth
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        auth = FirebaseAuth.getInstance()
+        val auth = FirebaseAuth.getInstance()
         setContentView(R.layout.activity_main)
 
         // Use Handler to delay the start of the next activity

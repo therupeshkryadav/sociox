@@ -91,6 +91,7 @@ class LoginActivity : AppCompatActivity() {
         // Handling the "Create" button click to navigate to the CreateActivity
         binding.create.setOnClickListener {
             startActivity(Intent(this, CreateActivity::class.java))
+
         }
 
         binding.forgot.setOnClickListener {

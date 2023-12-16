@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.socialbundle.R
-import com.example.socialbundle.Stories
+import com.example.socialbundle.DataClasses.Stories
 
 class myAdapter(private val storiesList: ArrayList<Stories>) : RecyclerView.Adapter<myAdapter.MyViewHolder>() {
 

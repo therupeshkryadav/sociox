@@ -1,4 +1,4 @@
-package com.example.socialbundle
+package com.example.socialbundle.DataClasses
 
 data class Posts(
     var profileImage: Int,

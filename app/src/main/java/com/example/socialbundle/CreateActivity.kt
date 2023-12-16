@@ -18,8 +18,9 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import com.example.socialbundle.MainActivity.Companion.auth
 import com.example.socialbundle.databinding.ActivityCreateBinding
+import com.example.socialbundle.utils.PROFILE_IMAGES_NODE
+import com.example.socialbundle.utils.USER_IMAGES_NODE
 import com.example.socialbundle.utils.USER_NODE
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -27,9 +28,9 @@ import com.google.firebase.storage.FirebaseStorage
 
 class CreateActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityCreateBinding
-    lateinit var storage: FirebaseStorage
-    var uri:Uri?=null
+    private lateinit var binding: ActivityCreateBinding
+    private lateinit var storage: FirebaseStorage
+    private var uri:Uri?=null
 
     @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,9 +40,9 @@ class CreateActivity : AppCompatActivity() {
         setContentView(binding.root)
         storage = FirebaseStorage.getInstance()
 
-        val galleryImage= registerForActivityResult(ActivityResultContracts.GetContent()){
-            binding.profileImage.setImageURI(it)
-            uri= it!!
+        val galleryImage= registerForActivityResult(ActivityResultContracts.GetContent()){imageuri->
+            binding.profileImage.setImageURI(imageuri)
+            uri=imageuri
         }
 
         binding.addYourProfilePic.setOnClickListener {
@@ -112,74 +113,95 @@ class CreateActivity : AppCompatActivity() {
             binding.password.setSelection(binding.password.text.length)     // Move the cursor to the end of password
         }
 
+        // Setting up the click listener for the sign-up button
         binding.signUp.setOnClickListener {
-
+            // Disabling the sign-up button to prevent multiple clicks
             binding.signUp.isEnabled = false
+            binding.progressBar1.visibility = View.VISIBLE
 
-            // Retrieving email and password from the input fields
+            // Retrieving user input data
             val email: String = binding.emails.text.toString()
             val pass: String = binding.password.text.toString()
             val confpass: String = binding.confPassword.text.toString()
             val name: String = binding.name1.text.toString()
             val usernames: String = binding.username.text.toString().trim()
 
-
+            // Validation for Full Name
             if (name.isEmpty()) {
                 binding.name1.error = "Full Name is required"
                 binding.name1.requestFocus()
                 binding.signUp.isEnabled = true
+                binding.progressBar1.visibility = View.INVISIBLE
             }
 
+            // Validation for Email
             if (email.isEmpty()) {
                 binding.emails.error = "Email ID is required"
                 binding.emails.requestFocus()
                 binding.signUp.isEnabled = true
+                binding.progressBar1.visibility = View.INVISIBLE
             } else if (!Patterns.EMAIL_ADDRESS.matcher(binding.emails.text).matches()) {
                 binding.emails.error = "Enter Valid Email"
                 binding.emails.requestFocus()
                 binding.signUp.isEnabled = true
+                binding.progressBar1.visibility = View.INVISIBLE
             }
 
+            // Validation for Username
             if (usernames.isEmpty()) {
                 binding.username.error = "Username is required"
                 binding.username.requestFocus()
                 binding.signUp.isEnabled = true
+                binding.progressBar1.visibility = View.INVISIBLE
             } else if (usernames.contains('\t')) {
                 binding.username.error = "Username can't contain Spaces"
                 binding.username.requestFocus()
                 binding.signUp.isEnabled = true
+                binding.progressBar1.visibility = View.INVISIBLE
             }
 
+            // Validation for Password
             if (pass.isEmpty()) {
                 binding.password.error = "Password is required"
                 binding.password.requestFocus()
                 binding.signUp.isEnabled = true
-            } else if (!pass.equals(confpass)) {
-                binding.confPassword.error = "Password did not matched"
-                binding.confPassword.requestFocus()
-                binding.password.clearComposingText()                        // Written Password is cleared
-                binding.confPassword.clearComposingText()
-                binding.signUp.isEnabled = true// Written Confirm Password is cleared
+                binding.progressBar1.visibility = View.INVISIBLE
             } else if (binding.password.length() <= 6) {
                 binding.password.error = "Password is Weak"
                 binding.password.requestFocus()
                 binding.signUp.isEnabled = true
+                binding.progressBar1.visibility = View.INVISIBLE
             }
 
+            // Validation for Confirm Password
             if (confpass.isEmpty()) {
                 binding.confPassword.error = "Confirm your password"
                 binding.confPassword.requestFocus()
                 binding.signUp.isEnabled = true
+                binding.progressBar1.visibility = View.INVISIBLE
+            } else if (!confpass.equals(pass)) {
+                binding.confPassword.error = "Password did not match"
+                binding.confPassword.requestFocus()
+                binding.password.clearComposingText()
+                binding.confPassword.clearComposingText()
+                binding.signUp.isEnabled = true
+                binding.progressBar1.visibility = View.INVISIBLE
             }
 
+            // Validation for accepting terms and conditions
+            if (!binding.termsCheck.isChecked) {
+                binding.terms.error = "Accept Terms and conditions "
+                binding.terms.requestFocus()
+                binding.signUp.isEnabled = true
+                binding.progressBar1.visibility = View.INVISIBLE
+            }
 
             // Creating a new user with email and password using Firebase authentication
-
-            if (email.isNotEmpty() && pass.isNotEmpty() && pass == confpass) {
-                auth.createUserWithEmailAndPassword(email, pass)
+            else if (email.isNotEmpty() && pass.isNotEmpty() && usernames.isNotEmpty() && confpass.isNotEmpty() && name.isNotEmpty() && binding.password.length() >= 6){
+                FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, pass)
                     .addOnCompleteListener { registrationTask ->
                         if (registrationTask.isSuccessful) {
-                            val firebaseUser = auth.currentUser
+                            val firebaseUser = FirebaseAuth.getInstance().currentUser
                             val userId = firebaseUser?.uid
 
                             // Function to upload image to Firebase Storage and update user data
@@ -191,38 +213,45 @@ class CreateActivity : AppCompatActivity() {
                                 val defaultImageUrl =
                                     "https://firebasestorage.googleapis.com/v0/b/sociox-0007.appspot.com/o/profile_img.png?alt=media&token=014a0f9a-6c95-4839-bc6f-c26218abfdc6"
 
-                                // If no image is selected, use the default image URL
-                                val imageUrl = uri?.let { selectedUri ->
-                                    storage.getReference("images").child(System.currentTimeMillis().toString())
-                                        .putFile(selectedUri)
+                                if (uri != null) {
+                                    storage.getReference(USER_IMAGES_NODE).child(PROFILE_IMAGES_NODE)
+                                        .child(userId).child(System.currentTimeMillis().toString())
+                                        .putFile(uri)
                                         .addOnSuccessListener { task ->
                                             task.metadata?.reference?.downloadUrl
                                                 ?.addOnSuccessListener { selectedImage ->
-                                                    // Set user data with the selected image URL
                                                     val hashMap = hashMapOf(
                                                         "id" to userId,
                                                         "username" to usernames.lowercase(),
-                                                        "name" to (name ?: ""),
+                                                        "name" to name,
+                                                        "mobilenumber" to "",
                                                         "emailId" to email,
                                                         "bio" to "default bio",
+                                                        "dateofbirth" to "",
+                                                        "gender" to "",
                                                         "imageurl" to selectedImage.toString()
                                                     )
 
                                                     reference.setValue(hashMap)
                                                         .addOnCompleteListener {
-                                                            // If user creation is successful, navigate to SocioActivity
-                                                            startActivity(Intent(this, SocioActivity::class.java))
+                                                            val intent = Intent(this, SocioActivity::class.java)
+                                                            intent.flags =
+                                                                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                                            startActivity(intent)
                                                             finish()
                                                             Log.d("Random", "$userId")
                                                         }
                                                 }
                                         }
-                                } ?: run {
+                                        .addOnFailureListener {
+                                            Toast.makeText(this,"Image Upload not successfull!!",Toast.LENGTH_SHORT).show()
+                                        }
+                                } else {
                                     // No image selected, use default image URL
                                     val hashMap = hashMapOf(
                                         "id" to userId,
                                         "username" to usernames.lowercase(),
-                                        "name" to (name ?: ""),
+                                        "name" to name,
                                         "emailId" to email,
                                         "bio" to "default bio",
                                         "imageurl" to defaultImageUrl
@@ -230,8 +259,9 @@ class CreateActivity : AppCompatActivity() {
 
                                     reference.setValue(hashMap)
                                         .addOnCompleteListener {
-                                            // If user creation is successful, navigate to SocioActivity
-                                            startActivity(Intent(this, SocioActivity::class.java))
+                                            val intent = Intent(this, SocioActivity::class.java)
+                                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                            startActivity(intent)
                                             finish()
                                             Log.d("Random", "$userId")
                                         }
@@ -249,9 +279,8 @@ class CreateActivity : AppCompatActivity() {
                         Toast.makeText(this, registrationFailure.localizedMessage, Toast.LENGTH_SHORT).show()
                     }
             }
-
-
         }
+
 
 
     }
