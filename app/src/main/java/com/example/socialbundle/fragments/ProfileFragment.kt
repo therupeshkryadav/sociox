@@ -48,7 +48,7 @@ class ProfileFragment : Fragment() {
         viewPagerAdapter.addFragment(MyPostsFragment(), icon0)
 
         // Create an Icon instance using a drawable resource
-        val iconResource1 = R.drawable.socio_clips
+        val iconResource1 = R.drawable.socio_clips_logo
         val icon1 = Icon.createWithResource(requireContext(), iconResource1)
         // Add the fragment and the icon to the adapter
         viewPagerAdapter.addFragment(MyClipsFragment(), icon1)

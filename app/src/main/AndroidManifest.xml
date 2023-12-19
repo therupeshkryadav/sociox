@@ -15,6 +15,12 @@
         android:theme="@style/Theme.SocialBundle"
         tools:targetApi="31">
         <activity
+            android:name=".post.UploadSocioClipsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".post.PostingActivity"
+            android:exported="false" />
+        <activity
             android:name=".EditActivity"
             android:exported="false" />
         <activity

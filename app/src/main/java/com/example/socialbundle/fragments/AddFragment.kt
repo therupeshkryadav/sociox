@@ -1,19 +1,39 @@
 package com.example.socialbundle.fragments
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.socialbundle.R
+import com.example.socialbundle.post.PostingActivity
+import com.example.socialbundle.post.UploadSocioClipsActivity
+import com.example.socialbundle.databinding.FragmentAddBinding
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class AddFragment : Fragment() {
+class AddFragment : BottomSheetDialogFragment() {
+
+    private lateinit var binding: FragmentAddBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add, container, false)
+        binding = FragmentAddBinding.inflate(inflater, container, false)
+        return binding.root
     }
+
+    override fun onStart() {
+        super.onStart()
+
+        binding.apply {
+            postAdd.setOnClickListener {
+                activity?.startActivity(Intent(requireContext(), PostingActivity::class.java))
+            }
+            socioClips.setOnClickListener {
+                activity?.startActivity(Intent(requireContext(), UploadSocioClipsActivity::class.java))
+            }
+        }
+    }
+
 }

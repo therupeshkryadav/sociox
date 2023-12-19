@@ -50,4 +50,5 @@
     <string name="username_nice_pic"><b>username</b> nice pic</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="your_video_may_appear_in_pots_or_you_can_also_find_in_the_profile_tab_of_your_profile">Your Video may appear in posts or you can also find in the profile tab of your profile</string>
 </resources>

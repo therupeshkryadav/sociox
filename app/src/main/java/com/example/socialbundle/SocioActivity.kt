@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.socialbundle.databinding.ActivitySocioBinding
+import com.example.socialbundle.fragments.AddFragment
 import com.example.socialbundle.fragments.ClipsFragment
 import com.example.socialbundle.fragments.HomeFragment
 import com.example.socialbundle.fragments.ProfileFragment
@@ -46,7 +47,8 @@ class SocioActivity : AppCompatActivity() {
                     true
                 }
                 R.id.bottom_add -> {
-
+                    val addFragment = AddFragment()
+                    addFragment.show(supportFragmentManager, addFragment.tag)
                     true
                 }
                 else -> false

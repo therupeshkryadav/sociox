@@ -1,11 +1,11 @@
 package com.example.socialbundle.Models
 
 class User {
-    var username : String ? = null
-    var name : String ? = null
-    var bio : String ? = null
-    var emailId : String ? = null
-    var imageurl : String ? = null
+    var username: String? = null
+    var name: String? = null
+    var bio: String? = null
+    var emailId: String? = null
+    var imageurl: String? = null
 
     constructor()
 
