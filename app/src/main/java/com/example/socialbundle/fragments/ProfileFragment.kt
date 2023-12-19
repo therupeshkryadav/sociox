@@ -10,12 +10,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.socialbundle.EditActivity
-import com.example.socialbundle.Highlights
-import com.example.socialbundle.LoginActivity
+import com.example.socialbundle.activities.EditActivity
+import com.example.socialbundle.activities.Highlights
+import com.example.socialbundle.activities.LoginActivity
 import com.example.socialbundle.R
 import com.example.socialbundle.databinding.FragmentProfileBinding
-import com.example.socialbundle.Adapters.myAdapter3
+import com.example.socialbundle.adapters.HighlightsAdapter
 import com.example.socialbundle.utils.USER_NODE
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -26,7 +26,7 @@ import com.squareup.picasso.Picasso
 class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
-    private lateinit var myAdapter3: myAdapter3
+    private lateinit var HighlightsAdapter: HighlightsAdapter
     private lateinit var highlightsList: ArrayList<Highlights>
     private lateinit var databaseReference: DatabaseReference
     private lateinit var viewPagerAdapter: ViewPagerAdapter
@@ -95,8 +95,8 @@ class ProfileFragment : Fragment() {
                 swipeRefreshLayout.isRefreshing = false // Stop the loading animation
             }
 
-            myAdapter3 = myAdapter3(highlightsList)
-            rvHighlight.adapter = myAdapter3
+            HighlightsAdapter = HighlightsAdapter(highlightsList)
+            rvHighlight.adapter = HighlightsAdapter
             rvHighlight.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }

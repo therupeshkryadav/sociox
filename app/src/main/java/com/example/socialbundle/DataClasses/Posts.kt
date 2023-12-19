@@ -6,5 +6,8 @@ data class Posts(
     var username: String,
     var location: String,
     var peoplesliked: String,
-    var userNDcaption: String
-)
+    var captions: String,
+    var imageurl: String,
+    var postid: String,
+    var publisher: String,
+    )

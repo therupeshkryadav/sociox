@@ -1,4 +1,4 @@
-package com.example.socialbundle.Adapters
+package com.example.socialbundle.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.socialbundle.DataClasses.Posts
 import com.example.socialbundle.R
 
-class myAdapter2(private val postsList: ArrayList<Posts>) :
-    RecyclerView.Adapter<myAdapter2.MyViewHolder>() {
+class AllPostsAdapter(private val postsList: ArrayList<Posts>) :
+    RecyclerView.Adapter<AllPostsAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView =
@@ -29,7 +29,7 @@ class myAdapter2(private val postsList: ArrayList<Posts>) :
         holder.username.text = currentItem.username
         holder.locations.text = currentItem.location
         holder.peopleslikedpost.text = currentItem.peoplesliked
-        holder.userNDcaptions.text = currentItem.userNDcaption
+        holder.userNDcaptions.text = currentItem.captions
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

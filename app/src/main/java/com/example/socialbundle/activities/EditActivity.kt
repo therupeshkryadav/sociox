@@ -1,4 +1,4 @@
-package com.example.socialbundle
+package com.example.socialbundle.activities
 
 import android.app.Activity
 import android.app.DatePickerDialog
@@ -19,7 +19,6 @@ import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
-
 
 class EditActivity : AppCompatActivity() {
 
@@ -129,11 +128,43 @@ class EditActivity : AppCompatActivity() {
             // Set a result flag to indicate that the profile has been updated
             val resultIntent = Intent()
             resultIntent.putExtra("PROFILE_UPDATED", true)
-            setResult(Activity.RESULT_OK, resultIntent)
+            setResult(RESULT_OK, resultIntent)
 
             // Finish the EditActivity
             finish()
     }
+    }
+
+    private fun updateUserData(
+        newFullName: String,
+        newUserName: String,
+        newEmail: String,
+        newBio: String,
+        newMobile: String,
+        newDateOfBirth: String,
+        selectedGender: String,
+        callingActivity: Activity
+    ) {
+        val currentUserId = FirebaseAuth.getInstance().currentUser?.uid
+
+        if (currentUserId != null) {
+            val userReference =
+                FirebaseDatabase.getInstance().getReference(USER_NODE).child(currentUserId)
+
+            // Update the user data including the new image URL
+            userReference.child("name").setValue(newFullName)
+            userReference.child("username").setValue(newUserName)
+            userReference.child("emailId").setValue(newEmail)
+            userReference.child("bio").setValue(newBio)
+            userReference.child("mobilenumber").setValue(newMobile)
+            userReference.child("dateofbirth").setValue(newDateOfBirth)
+            userReference.child("gender").setValue(selectedGender)
+
+            // Set a result flag to indicate that the profile has been updated
+            val resultIntent = Intent()
+            resultIntent.putExtra("PROFILE_UPDATED", true)
+            callingActivity.setResult(Activity.RESULT_OK, resultIntent)
+        }
     }
 
     private fun showDatePickerDialog() {
@@ -179,36 +210,3 @@ class EditActivity : AppCompatActivity() {
         return simpleDateFormat.format(calendar.time)
     }
 }
-
-private fun updateUserData(
-    newFullName: String,
-    newUserName: String,
-    newEmail: String,
-    newBio: String,
-    newMobile: String,
-    newDateOfBirth: String,
-    selectedGender: String,
-    callingActivity: Activity
-) {
-    val currentUserId = FirebaseAuth.getInstance().currentUser?.uid
-
-    if (currentUserId != null) {
-        val userReference =
-            FirebaseDatabase.getInstance().getReference(USER_NODE).child(currentUserId)
-
-        // Update the user data including the new image URL
-        userReference.child("name").setValue(newFullName)
-        userReference.child("username").setValue(newUserName)
-        userReference.child("emailId").setValue(newEmail)
-        userReference.child("bio").setValue(newBio)
-        userReference.child("mobilenumber").setValue(newMobile)
-        userReference.child("dateofbirth").setValue(newDateOfBirth)
-        userReference.child("gender").setValue(selectedGender)
-
-        // Set a result flag to indicate that the profile has been updated
-        val resultIntent = Intent()
-        resultIntent.putExtra("PROFILE_UPDATED", true)
-        callingActivity.setResult(Activity.RESULT_OK, resultIntent)
-    }
-}
-

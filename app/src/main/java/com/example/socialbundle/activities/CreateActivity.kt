@@ -1,4 +1,4 @@
-package com.example.socialbundle
+package com.example.socialbundle.activities
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -18,6 +18,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.example.socialbundle.R
 import com.example.socialbundle.databinding.ActivityCreateBinding
 import com.example.socialbundle.utils.PROFILE_IMAGES_NODE
 import com.example.socialbundle.utils.USER_IMAGES_NODE
@@ -30,7 +31,7 @@ class CreateActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCreateBinding
     private lateinit var storage: FirebaseStorage
-    private var uri:Uri?=null
+    private var uri: Uri?=null
 
     @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +41,7 @@ class CreateActivity : AppCompatActivity() {
         setContentView(binding.root)
         storage = FirebaseStorage.getInstance()
 
-        val galleryImage= registerForActivityResult(ActivityResultContracts.GetContent()){imageuri->
+        val galleryImage= registerForActivityResult(ActivityResultContracts.GetContent()){ imageuri->
             binding.profileImage.setImageURI(imageuri)
             uri=imageuri
         }
@@ -206,7 +207,8 @@ class CreateActivity : AppCompatActivity() {
 
                             // Function to upload image to Firebase Storage and update user data
                             fun uploadImageAndSetUserData(uri: Uri?) {
-                                val reference = FirebaseDatabase.getInstance().getReference(USER_NODE)
+                                val reference = FirebaseDatabase.getInstance()
+                                    .getReference(USER_NODE)
                                     .child(userId!!)
 
                                 // Default image URL if no image is selected
@@ -234,7 +236,10 @@ class CreateActivity : AppCompatActivity() {
 
                                                     reference.setValue(hashMap)
                                                         .addOnCompleteListener {
-                                                            val intent = Intent(this, SocioActivity::class.java)
+                                                            val intent = Intent(
+                                                                this,
+                                                                SocioActivity::class.java
+                                                            )
                                                             intent.flags =
                                                                 Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                                                             startActivity(intent)
@@ -244,7 +249,11 @@ class CreateActivity : AppCompatActivity() {
                                                 }
                                         }
                                         .addOnFailureListener {
-                                            Toast.makeText(this,"Image Upload not successfull!!",Toast.LENGTH_SHORT).show()
+                                            Toast.makeText(
+                                                this,
+                                                "Image Upload not successfull!!",
+                                                Toast.LENGTH_SHORT
+                                            ).show()
                                         }
                                 } else {
                                     // No image selected, use default image URL
@@ -276,7 +285,11 @@ class CreateActivity : AppCompatActivity() {
                         // If an error occurs during user creation, display an error message
                         binding.signUp.isEnabled = true
                         binding.progressBar1.visibility = View.INVISIBLE
-                        Toast.makeText(this, registrationFailure.localizedMessage, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this,
+                            registrationFailure.localizedMessage,
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
             }
         }
@@ -285,4 +298,3 @@ class CreateActivity : AppCompatActivity() {
 
     }
 }
-

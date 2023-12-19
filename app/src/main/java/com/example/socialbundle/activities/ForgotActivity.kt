@@ -1,4 +1,4 @@
-package com.example.socialbundle
+package com.example.socialbundle.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -59,18 +59,35 @@ class ForgotActivity : AppCompatActivity() {
                         }
 
                         if (emailFound) {
-                            FirebaseAuth.getInstance().sendPasswordResetEmail(emails.toString()).addOnCompleteListener { task ->
+                            FirebaseAuth.getInstance()
+                                .sendPasswordResetEmail(emails.toString()).addOnCompleteListener { task ->
                                     if (task.isSuccessful) {
                                         // Password reset email sent successfully
-                                        Toast.makeText(this@ForgotActivity, "Password reset email sent", Toast.LENGTH_SHORT).show()
-                                        startActivity(Intent(this@ForgotActivity, LoginActivity::class.java))
+                                        Toast.makeText(
+                                            this@ForgotActivity,
+                                            "Password reset email sent",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                        startActivity(
+                                            Intent(
+                                                this@ForgotActivity,
+                                                LoginActivity::class.java
+                                            )
+                                        )
                                         finish()
                                     } else {
                                         binding.sendOtp.isEnabled = true
                                         // Failed to send password reset email
                                         binding.progressBar2.visibility = View.INVISIBLE
-                                        Toast.makeText(this@ForgotActivity, "Something went wrong", Toast.LENGTH_SHORT).show()
-                                        Log.d("PasswordReset", "Failed to send password reset email")
+                                        Toast.makeText(
+                                            this@ForgotActivity,
+                                            "Something went wrong",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                        Log.d(
+                                            "PasswordReset",
+                                            "Failed to send password reset email"
+                                        )
                                     }
                                 }
                         } else {

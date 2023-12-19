@@ -10,14 +10,14 @@ import com.example.socialbundle.DataClasses.Posts
 import com.example.socialbundle.R
 import com.example.socialbundle.DataClasses.Stories
 import com.example.socialbundle.databinding.FragmentHomeBinding
-import com.example.socialbundle.Adapters.myAdapter
-import com.example.socialbundle.Adapters.myAdapter2
+import com.example.socialbundle.adapters.StoryAdapter
+import com.example.socialbundle.adapters.AllPostsAdapter
 
 class HomeFragment : Fragment() {
 
     lateinit var binding: FragmentHomeBinding
-    private lateinit var myAdapter: myAdapter
-    private lateinit var myAdapter2: myAdapter2
+    private lateinit var StoryAdapter: StoryAdapter
+    private lateinit var AllPostsAdapter: AllPostsAdapter
     private lateinit var storiesList: ArrayList<Stories>
     private lateinit var postsList: ArrayList<Posts>
 
@@ -48,13 +48,13 @@ class HomeFragment : Fragment() {
                 }
             }
 
-            myAdapter = myAdapter(storiesList)
-            rvStory.adapter = myAdapter
+            StoryAdapter = StoryAdapter(storiesList)
+            rvStory.adapter = StoryAdapter
             rvStory.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
-            myAdapter2 = myAdapter2(postsList)
-            rvPost.adapter = myAdapter2
+            AllPostsAdapter = AllPostsAdapter(postsList)
+            rvPost.adapter = AllPostsAdapter
             rvPost.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".post.PostingActivity">
+    tools:context=".UploadingWork.PostingActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/materialToolbar"
@@ -84,10 +84,11 @@
         app:layout_constraintTop_toBottomOf="@+id/post_add" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="16dp"
+        android:orientation="horizontal"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -95,23 +96,34 @@
 
         <Button
             android:id="@+id/cancel_button"
+            style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            app:strokeColor="@color/red"
-            android:textColor="@color/red"
             android:layout_weight="1"
-            style="@style/Widget.Material3.Button.OutlinedButton"
-            android:text="Cancel" />
+            android:text="Cancel"
+            android:textColor="@color/red"
+            app:strokeColor="@color/red" />
 
         <Button
             android:id="@+id/post_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/blue"
             android:layout_margin="10dp"
             android:layout_weight="1"
+            android:backgroundTint="@color/blue"
             android:text="Post" />
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressPost"
+        android:visibility="invisible"
+        android:layout_width="200dp"
+        android:progressTint="@color/blue"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

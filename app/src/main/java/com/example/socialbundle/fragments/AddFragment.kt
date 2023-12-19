@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.socialbundle.post.PostingActivity
-import com.example.socialbundle.post.UploadSocioClipsActivity
+import com.example.socialbundle.UploadingWork.PostingActivity
+import com.example.socialbundle.UploadingWork.UploadSocioClipsActivity
 import com.example.socialbundle.databinding.FragmentAddBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 

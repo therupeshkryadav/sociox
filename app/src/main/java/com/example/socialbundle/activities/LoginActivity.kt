@@ -1,16 +1,21 @@
-package com.example.socialbundle
+package com.example.socialbundle.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.example.socialbundle.R
 import com.example.socialbundle.databinding.ActivityLoginBinding
 import com.example.socialbundle.utils.USER_NODE
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class LoginActivity : AppCompatActivity() {
 
@@ -57,7 +62,12 @@ class LoginActivity : AppCompatActivity() {
                             reference.addValueEventListener(object : ValueEventListener {
                                 override fun onDataChange(snapshot: DataSnapshot) {
                                     // Navigating to SocioActivity upon successful login
-                                    startActivity(Intent(this@LoginActivity, SocioActivity::class.java))
+                                    startActivity(
+                                        Intent(
+                                            this@LoginActivity,
+                                            SocioActivity::class.java
+                                        )
+                                    )
                                     finish()
                                 }
 
@@ -84,7 +94,11 @@ class LoginActivity : AppCompatActivity() {
             } else {
                 // Enable the login button and show a Toast message for incomplete input
                 handleLoginError()
-                Toast.makeText(this@LoginActivity, "Fill all the required inputs", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this@LoginActivity,
+                    "Fill all the required inputs",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
 
@@ -101,16 +115,20 @@ class LoginActivity : AppCompatActivity() {
         binding.passwordShowHide1.setOnClickListener {
             // Checks whether the password is currently hidden or not
             val isPasswordVisible =
-                binding.editTextTextPassword.transformationMethod.equals(HideReturnsTransformationMethod.getInstance())
+                binding.editTextTextPassword.transformationMethod.equals(
+                    HideReturnsTransformationMethod.getInstance()
+                )
 
             // If Password is currently visible, hide it
             if (isPasswordVisible) {
-                binding.editTextTextPassword.transformationMethod = PasswordTransformationMethod.getInstance()
+                binding.editTextTextPassword.transformationMethod =
+                    PasswordTransformationMethod.getInstance()
                 binding.passwordShowHide1.setImageResource(R.drawable.ic_show_pwd)
             }
             // If Password is currently hidden, make it visible
             else {
-                binding.editTextTextPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                binding.editTextTextPassword.transformationMethod =
+                    HideReturnsTransformationMethod.getInstance()
                 binding.passwordShowHide1.setImageResource(R.drawable.ic_hide_pwd)
             }
 

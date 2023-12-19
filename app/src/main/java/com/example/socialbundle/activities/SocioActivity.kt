@@ -1,8 +1,9 @@
-package com.example.socialbundle
+package com.example.socialbundle.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.socialbundle.R
 import com.example.socialbundle.databinding.ActivitySocioBinding
 import com.example.socialbundle.fragments.AddFragment
 import com.example.socialbundle.fragments.ClipsFragment
