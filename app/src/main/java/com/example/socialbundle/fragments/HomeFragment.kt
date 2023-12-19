@@ -33,10 +33,10 @@ class HomeFragment : Fragment() {
 
 
         postsList = ArrayList()
-        postsList.add(Posts(R.drawable.profile_img, R.drawable.first,"username1","India","liked by ussername and 69 others","username1 caption caption caption"))
-        postsList.add(Posts(R.drawable.profile_img, R.drawable.first,"username2","India","liked by ussername and 69 others","username2 caption caption caption"))
-        postsList.add(Posts(R.drawable.profile_img, R.drawable.first,"username3","India","liked by ussername and 69 others","username3 caption caption caption"))
-        postsList.add(Posts(R.drawable.profile_img, R.drawable.first,"username4","India","liked by ussername and 69 others","username4 caption caption caption"))
+//        postsList.add(Posts(R.drawable.profile_img, R.drawable.first,"username1","India","liked by ussername and 69 others","username1 caption caption caption"))
+//        postsList.add(Posts(R.drawable.profile_img, R.drawable.first,"username2","India","liked by ussername and 69 others","username2 caption caption caption"))
+//        postsList.add(Posts(R.drawable.profile_img, R.drawable.first,"username3","India","liked by ussername and 69 others","username3 caption caption caption"))
+//        postsList.add(Posts(R.drawable.profile_img, R.drawable.first,"username4","India","liked by ussername and 69 others","username4 caption caption caption"))
 
 
         binding.apply {
