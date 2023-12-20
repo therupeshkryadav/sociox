@@ -14,17 +14,20 @@ class UserPostsAdapter(
     inner class ViewHolder(var binding: MyPostRvDesignBinding) :
         RecyclerView.ViewHolder(binding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onBindViewHolder(holder: UserPostsAdapter.ViewHolder, position: Int) {
+        Picasso.get().load(getAddpostList[position].post_image_url).into(holder.binding.postingPost)
+    }
+
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): UserPostsAdapter.ViewHolder {
         val binding = MyPostRvDesignBinding.inflate(LayoutInflater.from(context), parent, false)
         return ViewHolder(binding)
     }
 
+
     override fun getItemCount(): Int {
         return getAddpostList.size
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binding.postingPost
-        Picasso.get().load(getAddpostList[position].post_image_url).into(holder.binding.postingPost)
     }
 }

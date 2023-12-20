@@ -25,7 +25,6 @@
         android:layout_height="240dp"
         android:padding="10dp"
         android:layout_marginTop="16dp"
-       android:background="@drawable/bg_post"
         android:scaleType="fitCenter"
         android:src="@drawable/posting_act"
         app:layout_constraintEnd_toEndOf="parent"
